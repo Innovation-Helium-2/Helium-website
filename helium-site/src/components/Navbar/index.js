@@ -1,17 +1,18 @@
 import React from 'react';
+import Sidebar from '../sidebar/sidebar';
 import HamburgerMenu from './HamburgerMenu';
 import {
     Nav,
     NavLink,
-    NavMenu,
-    NavBtn,
-    NavBtnLink
+    NavMenu
 } from './NavbarElements';
 
 const Navbar = () => {
+
   return (
     <div>
         <Nav>
+            <Sidebar />
             <NavLink to="/Home">
                 <h1>Logo</h1>
             </NavLink>
@@ -26,13 +27,7 @@ const Navbar = () => {
                 <NavLink to="/Contact-Us" activeStyle>
                     Contact Us
                 </NavLink>
-                <NavLink to="/Sign-Up" activeStyle>
-                    Sign Up
-                </NavLink>
             </NavMenu>
-            <NavBtn>
-                <NavBtnLink to="/signin">Sign In</NavBtnLink>
-            </NavBtn>
         </Nav>
     </div>
   )
