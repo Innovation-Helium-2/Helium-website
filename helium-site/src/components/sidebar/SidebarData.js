@@ -22,7 +22,14 @@ export const SidebarData = [
       {
         title: 'Users',
         path: '/properties',
-        icon: <IoIcons.IoIosPaper />
+        icon: <IoIcons.IoIosPaper />,
+        iconClosed: <RiIcons.RiArrowDownSFill />,
+        iconOpened: <RiIcons.RiArrowUpSFill />,
+        subNav: [{
+          title: 'Users',
+          path: '/properties/users',
+          icon: <IoIcons.IoIosPaper />
+        }]
       }
     ]
   }

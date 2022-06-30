@@ -5,6 +5,8 @@ import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
 import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
+import { PropertyButton } from '../Properties/Property';
+import Devices from '../Properties/Devices';
 
 const Nav = styled.div`
   background: #15171c;
@@ -58,6 +60,10 @@ const Sidebar = () => {
             <NavIcon to='#'>
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
+            <div style={{display: 'flex'}}>
+              <PropertyButton/>
+              <Devices/>
+            </div>
             {SidebarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;
             })}

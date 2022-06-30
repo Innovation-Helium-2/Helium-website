@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './pages/about';
 import Contact from './pages/contact';
 import Signin from './pages/Signin';
+import Property from './pages/Property';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/Home' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/Contact-us' element={<Contact/>}/>
+        <Route path='/property/:id' element={<Property/>}/>
         </Routes>
       </Router>
     </div>
