@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/about';
 import Contact from './pages/contact';
-import Signin from './pages/Signin';
 import Property from './pages/Property';
 
 function App() {
@@ -17,6 +16,7 @@ function App() {
         <Route path='/about' element={<About/>}/>
         <Route path='/Contact-us' element={<Contact/>}/>
         <Route path='/property/:id' element={<Property/>}/>
+        <Route path='/properties/devices/:deviceName'/>
         </Routes>
       </Router>
     </div>

@@ -32,5 +32,27 @@ export const SidebarData = [
         }]
       }
     ]
+  },
+  {
+    title: 'Poop',
+    path: '/Property',
+    icon: <IoIcons.IoIosPaper />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: 'Users',
+        path: '/properties',
+        icon: <IoIcons.IoIosPaper />,
+        iconClosed: <RiIcons.RiArrowDownSFill />,
+        iconOpened: <RiIcons.RiArrowUpSFill />,
+        subNav: [{
+          title: 'Users',
+          path: '/properties/users',
+          icon: <IoIcons.IoIosPaper />
+        }]
+      }
+    ]
   }
 ];
