@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from '../sidebar/sidebar';
 import HamburgerMenu from './HamburgerMenu';
+import Logo from './H20 logo.png'
 import {
     Nav,
     NavLink,
@@ -16,7 +17,7 @@ const Navbar = () => {
                 <Sidebar />
             </div>
             <NavLink to="/Home">
-                <h1>Logo</h1>
+                <img src={Logo} alt='logo' style={{height: '100px', width: '100px'}}/>
             </NavLink>
             <HamburgerMenu/> 
             <NavMenu>

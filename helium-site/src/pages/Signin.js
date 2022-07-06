@@ -15,7 +15,9 @@ const Signin = () => {
             <div>
                 <button className='but' onClick={openmodal}>Signin</button>
                 <Modal isOpen={isOpen} className='modal' onRequestClose={openmodal} shouldCloseOnOverlayClick={true}>
-                    <AiIcons.AiOutlineClose onClick={openmodal} style={{fontSize: '3rem'}}/>
+                    <div style={{display: 'flex', justifyContent: 'flex-end', flexDirection: 'row'}}>
+                        <AiIcons.AiOutlineClose onClick={openmodal} style={{fontSize: '3rem'}}/>
+                    </div>
                     <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'row'}}>
                         <h1>Login</h1>
                     </div>
