@@ -1,10 +1,11 @@
 import React from 'react'
+import Signin from './Signin'
 
 const Home = () => {
   return (
     <div>
       <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-        <button className='but'>Signin</button>
+        <Signin/>
       </div>
       <div style={{
           display: 'flex',

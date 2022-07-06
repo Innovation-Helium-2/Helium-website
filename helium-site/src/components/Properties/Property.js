@@ -33,15 +33,21 @@ export const PropertyButton = () => {
     return (
         <>
             <button className='but' onClick={showmodel}>Add Property</button>
-            <Modal isOpen={show}>
-               <AiOutlineClose style={{color: 'black'}} onClick={showmodel}/> 
-               <form>
-                    <label>
-                        Property ID
-                    </label>
-                    <input type='text' onChange={infoChange}/>
-                    <input type='submit' onClick={onSubmit}/>
-               </form>
+            <Modal isOpen={show} className='modal' onRequestClose={showmodel} shouldCloseOnOverlayClick={true}>
+               <AiOutlineClose style={{color: 'black', fontSize: '3rem'}} onClick={showmodel}/>
+               <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'row'}}>
+                <div className='input-container'>
+                        <form>
+                                <h1>Property</h1>
+                                <div className='input-group' style={{padding: '10px 0px 0px 0px'}}>
+                                    <input type='text' onChange={infoChange} placeholder='Enter Property Name Here'/>
+                                </div>
+                                <div className='input-group' style={{padding: '10px 0px 0px 0px'}}>
+                                    <input type='submit' onClick={onSubmit}/>
+                                </div>
+                        </form>
+                    </div> 
+               </div>
             </Modal>
         </>
     );

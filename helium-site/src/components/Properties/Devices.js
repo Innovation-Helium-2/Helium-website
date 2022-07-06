@@ -34,17 +34,28 @@ export const Devices = () => {
   return (
     <>
         <button className='but' onClick={showmodel}>Add Device</button>
-        <ReactModal isOpen={show}>
-            <AiOutlineClose style={{color: 'black'}} onClick={showmodel}/>
-            <form>
-                <select value={inde} onChange={indeChange}>
-                    {SidebarData[1].subNav.map((item, index) => {
-                        return <option value={index}>{item.title}</option>
-                    })}
-                </select>
-                <input type={'text'} onChange={infoChange}/>
-                <input type={'submit'} onClick={handleSubmit}/>
-            </form>
+        <ReactModal isOpen={show} className='modal' onRequestClose={showmodel} shouldCloseOnOverlayClick={true}>
+            <AiOutlineClose style={{color: 'black', fontSize: '3rem'}} onClick={showmodel}/>
+            <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'row'}}>
+                <div className='input-container'>
+                    <form>
+                        <h1>Device</h1>
+                        <div className='input-group' style={{padding: '10px 0px 0px 0px'}}>
+                            <select value={inde} onChange={indeChange} placeholder='Pick A Property'>
+                                {SidebarData[1].subNav.map((item, index) => {
+                                    return <option value={index}>{item.title}</option>
+                                })}
+                            </select>
+                        </div>
+                        <div className='input-group' style={{padding: '10px 0px 0px 0px'}}>
+                            <input type={'text'} onChange={infoChange} placeholder='Enter Device Name'/>
+                        </div>
+                        <div className='input-group' style={{padding: '10px 0px 0px 0px'}}>
+                            <input type={'submit'} onClick={handleSubmit}/>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </ReactModal>
     </>
   )

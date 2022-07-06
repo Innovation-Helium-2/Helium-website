@@ -12,7 +12,9 @@ const Navbar = () => {
   return (
     <div>
         <Nav>
-            <Sidebar />
+            <div style={{position: 'absolute', left: '0%'}}>
+                <Sidebar />
+            </div>
             <NavLink to="/Home">
                 <h1>Logo</h1>
             </NavLink>
@@ -20,9 +22,6 @@ const Navbar = () => {
             <NavMenu>
                 <NavLink to="/about" activeStyle>
                     About
-                </NavLink>
-                <NavLink to="/Services" activeStyle>
-                    Services
                 </NavLink>
                 <NavLink to="/Contact-Us" activeStyle>
                     Contact Us

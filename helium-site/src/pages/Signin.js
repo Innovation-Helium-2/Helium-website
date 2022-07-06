@@ -1,67 +1,42 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-grid-system';
+import React, { useState } from 'react';
+import * as AiIcons from 'react-icons/ai';
 import Modal from 'react-modal';
 
-class Signin extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            isOpen: this.open
-        };
+const Signin = () => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+
+    const openmodal = () => {
+        setIsOpen(!isOpen);
     }
 
-
-    openmodal = () => {
-        this.setState({isOpen: true});
-    }
-
-    closemodal = () => {
-        this.setState({isOpen: false});
-    }
-
-    render() {
         return(
             <div>
-                <Modal isOpen={this.state.isOpen}>
-                    <Container style={
-                        {
-                            display: 'grid',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            gap: '20px'
-                        }
-                    }>
-                        <Row>
-                            <Col style={{color: '#15cdfc'}}><h1>Sign In</h1></Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <form>
-                                    <label style={{background: 'black', fontSize: '28px', position: 'absolute', left: '-7rem', color: '#15cdfc'}} for={'username'}>
-                                        Username 
-                                    </label>
-                                    <input type={'text'} name={'username'} placeholder={'Type Here ....'} style={{padding: '9px 20px'}} size={'50'}/>
-                                </form>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <form>
-                                    <label style={{background: 'black', fontSize: '28px', position: 'absolute', left: '-6rem', color: '#15cdfc'}} for={'username'}>
-                                        Password 
-                                    </label>
-                                    <input type={'password'} name={'username'} placeholder={'Type Here ....'} style={{padding: '9px 20px'}} size={'50'}/>
-                                </form>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <button onClick={this.closemodal}>Submit</button>
-                        </Row>
-                    </Container>
+                <button className='but' onClick={openmodal}>Signin</button>
+                <Modal isOpen={isOpen} className='modal' onRequestClose={openmodal} shouldCloseOnOverlayClick={true}>
+                    <AiIcons.AiOutlineClose onClick={openmodal} style={{fontSize: '3rem'}}/>
+                    <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'row'}}>
+                        <h1>Login</h1>
+                    </div>
+                    <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'row'}}>
+                        <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
+                            <div className='input-container'>
+                                <div className='input-group' style={{padding: '10px 0px 0px 0px'}}>
+                                    <input type={'text'} placeholder='Enter Username'/>
+                                </div>
+                                <div className='input-group' style={{padding: '10px 0px 0px 0px'}}>
+                                    <input type={'password'} placeholder='Enter Password'/>
+                                </div>
+                            </div>
+                            <div className='input-group' style={{padding: '10px 100px 0px 100px', width: '90%', fontSize: ''}}>
+                                <input type={'submit'} onClick={openmodal}/>
+                            </div>
+                        </div>
+                    </div>
                 </Modal>
             </div>
         )
     }
-}
 
 export default Signin

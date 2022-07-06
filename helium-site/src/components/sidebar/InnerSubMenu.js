@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const DropdownLink = styled(Link)`
+const DropdownLink = styled.div`
   background: #414757;
   height: 60px;
   padding-left: 3rem;
@@ -46,7 +46,7 @@ const InnerSubMenu = ({ item, index }) => {
   return (
 
 <>
-            <DropdownLink to={item.path} key={index} onClick={item.subNav && showSubnav}>
+            <DropdownLink key={index} onClick={item.subNav && showSubnav}>
               <div>
                 {item.icon}
                 <SidebarLabel>
