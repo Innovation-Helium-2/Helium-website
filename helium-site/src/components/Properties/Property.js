@@ -34,7 +34,9 @@ export const PropertyButton = () => {
         <>
             <button className='but' onClick={showmodel}>Add Property</button>
             <Modal isOpen={show} className='modal' onRequestClose={showmodel} shouldCloseOnOverlayClick={true}>
-               <AiOutlineClose style={{color: 'black', fontSize: '3rem'}} onClick={showmodel}/>
+                <div style={{display: 'flex', justifyContent: 'flex-end', flexDirection: 'row'}}>
+                    <AiOutlineClose style={{color: 'black', fontSize: '3rem'}} onClick={showmodel}/>
+                </div>
                <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'row'}}>
                 <div className='input-container'>
                         <form>
