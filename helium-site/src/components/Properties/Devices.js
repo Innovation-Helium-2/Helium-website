@@ -3,15 +3,19 @@ import ReactModal from 'react-modal';
 import { AiOutlineClose } from "react-icons/ai";
 import { SidebarData } from '../sidebar/SidebarData';
 import * as IoIcons from 'react-icons/io';
+import { useSelector } from 'react-redux';
 
 export const Devices = () => {
 
     const [show, setShow] = useState(false);
     const [inde, setInde] = useState(0);
     const [info, setInfo] = useState('');
+    const allow = useSelector((state) => state.signIn.allow)
 
     const showmodel = () => {
-        setShow(!show);
+        if(allow){
+            setShow(!show);
+        }
     }
 
     const indeChange = (e) => {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import InnerSubMenu from './InnerSubMenu';
@@ -26,13 +27,20 @@ const SidebarLabel = styled.span`
 `;
 
 const SubMenu = ({ item }) => {
+
   const [subnav, setSubnav] = useState(false);
 
-  const showSubnav = () => setSubnav(!subnav);
+  const allow = useSelector((state) => state.signIn.allow)
+
+  const showSubnav = () => {
+    if(allow){
+      setSubnav(!subnav)
+    }
+  };
 
   return (
     <>
-      <SidebarLink to={'/home'} onClick={item.subNav && showSubnav}>
+      <SidebarLink to={'/'} onClick={ item.subNav && showSubnav}>
         <div>
           {item.icon}
           <SidebarLabel>{item.title}</SidebarLabel>

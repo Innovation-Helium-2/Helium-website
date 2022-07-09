@@ -1,19 +1,38 @@
 import React, { useState } from 'react';
 import * as AiIcons from 'react-icons/ai';
 import Modal from 'react-modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { logIn, logOut } from '../Redux/allowSlice';
 
 const Signin = () => {
 
     const [isOpen, setIsOpen] = useState(false);
 
+    const [isLog, setIsLog] = useState('Sign In')
+
+    const dispatch = useDispatch();
+
+    const allow = useSelector((state) => state.signIn.allow)
 
     const openmodal = () => {
-        setIsOpen(!isOpen);
+        if(allow){
+            dispatch(logOut())
+            setIsLog('Sign In')
+        }
+        else{
+            setIsOpen(!isOpen);
+        }
+    }
+
+    const onSubmit = () => {
+        dispatch(logIn())
+        setIsLog('Log Out')
+        openmodal()
     }
 
         return(
             <div>
-                <button className='but' onClick={openmodal}>Signin</button>
+                <button className='but' onClick={openmodal}>{isLog}</button>
                 <Modal isOpen={isOpen} className='modal' onRequestClose={openmodal} shouldCloseOnOverlayClick={true}>
                     <div style={{display: 'flex', justifyContent: 'flex-end', flexDirection: 'row'}}>
                         <AiIcons.AiOutlineClose onClick={openmodal} style={{fontSize: '3rem'}}/>
@@ -32,7 +51,7 @@ const Signin = () => {
                                 </div>
                             </div>
                             <div className='input-group' style={{padding: '10px 100px 0px 100px', width: '90%', fontSize: ''}}>
-                                <input type={'submit'} onClick={openmodal}/>
+                                <input type={'submit'} onClick={onSubmit}/>
                             </div>
                         </div>
                     </div>
