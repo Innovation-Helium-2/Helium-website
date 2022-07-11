@@ -53,8 +53,8 @@ const SubMenu = ({ item }) => {
             : null}
         </div>
       </SidebarLink>
-      {subnav && item.subNav.map((item, index) => {
-        return <InnerSubMenu item={item} key={index}/>
+      {subnav && item.subNav.map((stuff, index) => {
+        return (<InnerSubMenu item={stuff} index={index}/>)
       })}
     </>
   );

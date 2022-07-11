@@ -7,6 +7,7 @@ import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
 import { PropertyButton } from '../Properties/Property';
 import Devices from '../Properties/Devices';
+import Search from './Search';
 
 const Nav = styled.div`
   background: #15171c;
@@ -63,6 +64,9 @@ const Sidebar = () => {
             <div style={{display: 'flex'}}>
               <PropertyButton/>
               <Devices/>
+            </div>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+              <Search/>
             </div>
             {SidebarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;

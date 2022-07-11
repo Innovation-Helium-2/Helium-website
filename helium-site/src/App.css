@@ -106,3 +106,7 @@
 .modal {
     background-color: #6EA2D2;
 }
+
+.show {
+  display: flex;
+}
