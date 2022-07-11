@@ -7,6 +7,7 @@ import {
     NavLink,
     NavMenu
 } from './NavbarElements';
+import SignUp from './SignUp';
 
 const Navbar = () => {
 
@@ -27,6 +28,9 @@ const Navbar = () => {
                 <NavLink to="/Contact-Us" activeStyle>
                     Contact Us
                 </NavLink>
+                <div style={{position: 'absolute', right: '0%'}}>
+                    <SignUp/>
+                </div>
             </NavMenu>
         </Nav>
     </div>
