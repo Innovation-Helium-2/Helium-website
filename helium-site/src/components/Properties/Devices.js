@@ -54,6 +54,21 @@ export const Devices = () => {
                             </select>
                         </div>
                         <div className='input-group' style={{padding: '10px 0px 0px 0px'}}>
+                            <select>
+                                <option>Temperature Sensor</option>
+                                <option>Humidity Sensor</option>
+                                <option>Motion Sensor</option>
+                                <option>Contact Sensor</option>
+                                <option>Gas / Air Quality Sensor</option>
+                                <option>Electrical Current Monitoring Sensor</option>
+                                <option>Water Quality Sensor</option>
+                                <option>Smoke Sensor</option>
+                                <option>Image Sensor</option>
+                                <option>Chemical Sensor</option>
+                                <option>Pressure Sensor</option>
+                            </select>
+                        </div>
+                        <div className='input-group' style={{padding: '10px 0px 0px 0px'}}>
                             <input type={'text'} onChange={infoChange} placeholder='Enter Device Name'/>
                         </div>
                         <div className='input-group' style={{padding: '10px 0px 0px 0px'}}>
