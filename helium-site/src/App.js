@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './pages/about';
 import Contact from './pages/contact';
 import Property from './pages/Property';
+import Device from './pages/Device';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Route path='/about' element={<About/>}/>
         <Route path='/Contact-us' element={<Contact/>}/>
         <Route path='/property/:id' element={<Property/>}/>
-        <Route path='/properties/devices/:deviceName'/>
+        <Route path='/:property/devices/:deviceName' element={<Device/>}/>
         </Routes>
       </Router>
     </div>

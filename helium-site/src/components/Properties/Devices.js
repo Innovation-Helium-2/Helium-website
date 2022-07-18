@@ -13,7 +13,8 @@ export const Devices = () => {
     const [show, setShow] = useState(false);
     const [inde, setInde] = useState(0);
     const [info, setInfo] = useState('');
-    const allow = useSelector((state) => state.signIn.allow)
+    const [deviceType, setDeviceType] = useState('Temperature Sensor');
+    const allow = useSelector((state) => state.signIn.allow);
 
     const showmodel = () => {
         if(allow){
@@ -29,6 +30,10 @@ export const Devices = () => {
         setInfo(e.target.value);
     }
 
+    const handleType = e => {
+        setDeviceType(e.target.value);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const params = JSON.stringify({
@@ -38,11 +43,14 @@ export const Devices = () => {
         'Content-Type': 'application/json'}})
         .then(function(response){
             console.log(JSON.stringify(response));
+            let property = SidebarData[1].subNav[inde].title;
             SidebarData[1].subNav[inde].subNav.push({
                 title: info,
-                path: '/properties/devices/' + info,
+                path: '/' + property + '/devices/' + info,
+                type: deviceType,
                 icon: <IoIcons.IoIosPaper />
             })
+            console.log(SidebarData)
             showmodel();
         })
         .catch(function(e) {
@@ -69,8 +77,8 @@ export const Devices = () => {
                             </select>
                         </div>
                         <div className='input-group' style={{padding: '10px 0px 0px 0px'}}>
-                            <select>
-                                <option>Temperature Sensor</option>
+                            <select onChange={handleType}>
+                                <option value='Temperature Sensor' key='Temperature Sensor'>Temperature Sensor</option>
                                 <option>Humidity Sensor</option>
                                 <option>Motion Sensor</option>
                                 <option>Contact Sensor</option>
