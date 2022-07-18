@@ -4,6 +4,9 @@ import { AiOutlineClose } from "react-icons/ai";
 import { SidebarData } from '../sidebar/SidebarData';
 import * as IoIcons from 'react-icons/io';
 import { useSelector } from 'react-redux';
+import axios from '../../api/axios';
+
+const DEVICE_URL = '/device'
 
 export const Devices = () => {
 
@@ -26,13 +29,25 @@ export const Devices = () => {
         setInfo(e.target.value);
     }
 
-    const handleSubmit = () => {
-        SidebarData[1].subNav[inde].subNav.push({
-            title: info,
-            path: '/properties/devices/' + info,
-            icon: <IoIcons.IoIosPaper />
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const params = JSON.stringify({
+            "device": info,
+        });
+        axios.post(DEVICE_URL, params, {headers: {"Access-Control-Allow-Origin": "*",
+        'Content-Type': 'application/json'}})
+        .then(function(response){
+            console.log(JSON.stringify(response));
+            SidebarData[1].subNav[inde].subNav.push({
+                title: info,
+                path: '/properties/devices/' + info,
+                icon: <IoIcons.IoIosPaper />
+            })
+            showmodel();
         })
-        showmodel();
+        .catch(function(e) {
+            console.log(e);
+        });
     }
 
   return (
@@ -72,7 +87,7 @@ export const Devices = () => {
                             <input type={'text'} onChange={infoChange} placeholder='Enter Device Name'/>
                         </div>
                         <div className='input-group' style={{padding: '10px 0px 0px 0px'}}>
-                            <input type={'submit'} onClick={handleSubmit}/>
+                            <input type={'submit'} onClick={(e) => handleSubmit(e)}/>
                         </div>
                     </form>
                 </div>

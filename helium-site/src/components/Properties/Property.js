@@ -5,6 +5,9 @@ import { SidebarData } from '../sidebar/SidebarData';
 import * as IoIcons from 'react-icons/io';
 import * as RiIcons from 'react-icons/ri';
 import { useSelector } from 'react-redux';
+import axios from '../../api/axios';
+
+const PROPERTY_URL = '/property';
 
 export const PropertyButton = () => {
     const [show, setShow] = useState(false);
@@ -21,17 +24,35 @@ export const PropertyButton = () => {
         setInfo(e.target.value);
     }
 
-    const onSubmit = () => {
-        SidebarData[1].subNav.push({
-            title: info,
-            path: '/Property/' + info,
-            icon: <IoIcons.IoIosPaper />,
-            iconClosed: <RiIcons.RiArrowDownSFill />,
-            iconOpened: <RiIcons.RiArrowUpSFill />,
-            subNav: []
-        });
-        showmodel();
-        console.log(SidebarData);
+    const onSubmit = (e) => {
+        e.preventDefault();
+        if(info === ''){
+            window.alert('Need to Input Property Name')
+        }
+        else{
+            const params = JSON.stringify({
+                "property": info,
+            });
+            axios.post(PROPERTY_URL, params, {headers: {"Access-Control-Allow-Origin": "*",
+            'Content-Type': 'application/json'}})
+            .then(function(response){
+                console.log(JSON.stringify(response));
+                SidebarData[1].subNav.push({
+                    title: info,
+                    path: '/Property/' + info,
+                    icon: <IoIcons.IoIosPaper />,
+                    iconClosed: <RiIcons.RiArrowDownSFill />,
+                    iconOpened: <RiIcons.RiArrowUpSFill />,
+                    subNav: []
+                });
+                showmodel();
+                console.log(SidebarData);
+            })
+            .catch(function(e) {
+                console.log(e);
+            });
+            
+    }
     }
 
     return (
@@ -49,7 +70,7 @@ export const PropertyButton = () => {
                                     <input type='text' onChange={infoChange} placeholder='Enter Property Name Here'/>
                                 </div>
                                 <div className='input-group' style={{padding: '10px 0px 0px 0px'}}>
-                                    <input type='submit' onClick={onSubmit}/>
+                                    <input type='submit' onClick={(e) => onSubmit(e)}/>
                                 </div>
                         </form>
                     </div> 
