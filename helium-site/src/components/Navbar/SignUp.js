@@ -11,48 +11,52 @@ const SignUp =  () => {
     const [password,setPassword] = useState('');
     const [property,setProperty] = useState('');
     const [device,setDevice] = useState('');
+    
     const openmodal = () => {
         
         
         setShowModal(!showModal);
     }
-    const onSubmit = async(e) => {
+
+    const onSubmit = (e) => {
         e.preventDefault(); 
         console.log(name, password,property,device);
-        try {
-            const response = await axios.post(USER_URL,
-                JSON.stringify({ name, password }),
-                { 
-                    headers: {"Access-Control-Allow-Origin": "*",
-                    'Content-Type': 'application/json'}
-                }
-            );
-            console.log(JSON.stringify(response?.data));
-            console.log(JSON.stringify(response));
-
-            const propertyUpdate = await axios.post(PROPERTY_URL, JSON.stringify({property}),
-            { 
-                headers: {"Access-Control-Allow-Origin": "*",
-                'Content-Type': 'application/json'}
-            });
-            console.log(JSON.stringify(propertyUpdate?.data));
-            console.log(JSON.stringify(propertyUpdate));
-
-            const deviceUpdate = await axios.post(DEVICE_URL, JSON.stringify({device}),
-            { 
-                headers: {"Access-Control-Allow-Origin": "*",
-                'Content-Type': 'application/json'}
-            });
-            console.log(JSON.stringify(deviceUpdate?.data));
-            console.log(JSON.stringify(deviceUpdate));
-        } catch (e) {
-            if (e.response && e.response.data) {
-                console.log(e.response.data.message) // some reason error message
-            }
+        const params = JSON.stringify({
+            "device": device,
+        });
+        axios.post(DEVICE_URL, params, {headers: {"Access-Control-Allow-Origin": "*",
+        'Content-Type': 'application/json'}})
+        .then(function(response) {
+            console.log(response.data.insertedId);
+            const params_2 = JSON.stringify({
+                "property": property,
+                "device_id": [
+                    JSON.stringify(response.data.insertedId)
+                ]
+            })
+            axios.post(PROPERTY_URL, params_2, {headers: {"Access-Control-Allow-Origin": "*",
+            'Content-Type': 'application/json'}})
+            .then(function(response_2){
+                console.log(JSON.stringify(response_2.data))
+                const params_3 = JSON.stringify({
+                    "name": name,
+                    "password": password,
+                    "property_id": [
+                        JSON.stringify(response_2.data.insertedId)
+                    ]
+                })
+                axios.post(USER_URL, params_3, {headers: {"Access-Control-Allow-Origin": "*",
+                'Content-Type': 'application/json'}})
+                .then(function(response_3){
+                    console.log(JSON.stringify(response_3.data.insertedId))
+                    openmodal();
+                })
+            })
+        })
+        .catch(function(e) {
             console.log(e);
-            window.alert("signup failed");
-        }
-        setShowModal(!showModal);
+            window.alert('Sign Up failed')
+        })
     }
 
   return (

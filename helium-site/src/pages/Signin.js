@@ -4,7 +4,13 @@ import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn, logOut } from '../Redux/allowSlice';
 import axios from '../api/axios';
-const INFO_CHECK_URL = '/info';
+import { SidebarData } from '../components/sidebar/SidebarData'
+import * as IoIcons from 'react-icons/io';
+import * as RiIcons from 'react-icons/ri';
+const INFO_CHECK_URL = '/findUser';
+const PROPERTY_INFO_URL = '/propertyInfo'
+const FIND_PROPERTY_URL = '/property/'
+const FIND_DEVICE_URL = '/device/'
 const Signin = () => {
 
     const [isOpen, setIsOpen] = useState(false);
@@ -21,37 +27,76 @@ const Signin = () => {
         if(allow){
             dispatch(logOut())
             setIsLog('Sign In')
+            let properties = SidebarData[1].subNav
+            while(properties.length > 0){
+                properties.pop();
+            }
         }
         else{
             setIsOpen(!isOpen);
         }
     }
 
-    const onSubmit = async () => {
-        try {
-            const response = await axios.post(INFO_CHECK_URL,
-                JSON.stringify({ name, password }),
-                { 
-                    headers: {"Access-Control-Allow-Origin": "*",
-                    'Content-Type': 'application/json'}
-                }
-            );
-            if (response?.data === null){
-                window.alert("account does not exist"); 
-            } else {
-                dispatch(logIn())
-                setIsLog('Log Out')
-                openmodal()
-            }
-            // console.log(JSON.stringify(response));
-
-        } catch (e) {
-            if (e.response && e.response.data) {
-                console.log(e.response.data.message) // some reason error message
-            }
-            console.log(e);
-            window.alert("login failed");
-        }
+    const onSubmit = () => {
+        const params = JSON.stringify({
+            "name": name,
+            "password": password
+        })
+        axios.post(INFO_CHECK_URL, params, {headers: {"Access-Control-Allow-Origin": "*",
+        'Content-Type': 'application/json'}})
+        .then(function(response){
+            console.log(response)
+            dispatch(logIn())
+            setIsLog('Log Out')
+            openmodal()
+            axios.post(PROPERTY_INFO_URL, params, {headers: {"Access-Control-Allow-Origin": "*",
+            'Content-Type': 'application/json'}})
+            .then(function(response_2){
+                console.log(JSON.stringify(response_2.data))
+                let prop_array = SidebarData[1].subNav
+                let index = 0;
+                response_2.data.forEach(e => {
+                    let info = JSON.stringify(e);
+                    let sliced = info.split('\"')[4];
+                    let reduced = sliced.slice(0, -1)
+                    axios.get(FIND_PROPERTY_URL + reduced, {}, {headers: {"Access-Control-Allow-Origin": "*",
+                    'Content-Type': 'application/json'}})
+                    .then(function(response_3){
+                        console.log(JSON.stringify(response_3.data))
+                        prop_array.push({
+                            title: response_3.data.property,
+                            path: '/Property/' + response_3.data.property,
+                            icon: <IoIcons.IoIosPaper />,
+                            iconClosed: <RiIcons.RiArrowDownSFill />,
+                            iconOpened: <RiIcons.RiArrowUpSFill />,
+                            subNav: []
+                        });
+                        let devices = prop_array[index].subNav
+                        response_3.data.device_id.forEach(e => {
+                            let info_2 = JSON.stringify(e);
+                            let sliced_2 = info_2.split('\"')[4];
+                            let reduced_2 = sliced_2.slice(0, -1);
+                            axios.get(FIND_DEVICE_URL + reduced_2, {}, {headers: {"Access-Control-Allow-Origin": "*",
+                            'Content-Type': 'application/json'}})
+                            .then(function(response_4){
+                                console.log(JSON.stringify(response_4.data))
+                                devices.push({
+                                    title: response_4.data.device,
+                                    path: '/' + response_3.data.property + '/devices/' + response_4.data.device,
+                                    type: '',
+                                    icon: <IoIcons.IoIosPaper />
+                                })
+                            })
+                            index++;
+                        });
+                    })
+                });
+            })
+        })
+        .catch(function(e){
+            console.log(e)
+            window.alert('Invalid Username or Password')
+        })
         
     }
 
