@@ -7,10 +7,14 @@ import axios from '../api/axios';
 import { SidebarData } from '../components/sidebar/SidebarData'
 import * as IoIcons from 'react-icons/io';
 import * as RiIcons from 'react-icons/ri';
+
 const INFO_CHECK_URL = '/findUser';
 const PROPERTY_INFO_URL = '/propertyInfo'
 const FIND_PROPERTY_URL = '/property/'
 const FIND_DEVICE_URL = '/device/'
+
+export const log = []
+
 const Signin = () => {
 
     const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +30,7 @@ const Signin = () => {
         
         if(allow){
             dispatch(logOut())
+            log.pop()
             setIsLog('Sign In')
             let properties = SidebarData[1].subNav
             while(properties.length > 0){
@@ -46,6 +51,10 @@ const Signin = () => {
         'Content-Type': 'application/json'}})
         .then(function(response){
             console.log(response)
+            log.push({
+                same: name,
+                pass: password,
+            })
             dispatch(logIn())
             setIsLog('Log Out')
             openmodal()

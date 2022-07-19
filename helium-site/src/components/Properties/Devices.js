@@ -6,7 +6,8 @@ import * as IoIcons from 'react-icons/io';
 import { useSelector } from 'react-redux';
 import axios from '../../api/axios';
 
-const DEVICE_URL = '/device'
+const ADD_DEVICE_URL = '/addDevice/'
+const CREATE_DEVICE_URL = '/device'
 
 export const Devices = () => {
 
@@ -36,26 +37,30 @@ export const Devices = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const params = JSON.stringify({
-            "device": info,
+        let property = SidebarData[1].subNav[inde].title
+        const params_2 = JSON.stringify({
+            "property": property,
         });
-        axios.post(DEVICE_URL, params, {headers: {"Access-Control-Allow-Origin": "*",
+        const params = JSON.stringify({
+            "device": info
+        })
+        axios.post(CREATE_DEVICE_URL, params, {headers: {"Access-Control-Allow-Origin": "*",
         'Content-Type': 'application/json'}})
         .then(function(response){
-            console.log(JSON.stringify(response));
-            let property = SidebarData[1].subNav[inde].title;
-            SidebarData[1].subNav[inde].subNav.push({
-                title: info,
-                path: '/' + property + '/devices/' + info,
-                type: deviceType,
-                icon: <IoIcons.IoIosPaper />
+            let info_1 = JSON.stringify(response.data.insertedId);
+            axios.put(ADD_DEVICE_URL + info_1, params_2, {headers: {"Access-Control-Allow-Origin": "*",
+            'Content-Type': 'application/json'}})
+            .then(function(response_2){
+                console.log(response_2)
+                SidebarData[1].subNav[inde].subNav.push({
+                    title: info,
+                    path: '/' + property + '/devices/' + info,
+                    type: deviceType,
+                    icon: <IoIcons.IoIosPaper />
+                })
+                showmodel()
             })
-            console.log(SidebarData)
-            showmodel();
         })
-        .catch(function(e) {
-            console.log(e);
-        });
     }
 
   return (
