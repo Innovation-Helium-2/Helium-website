@@ -6,6 +6,7 @@ import About from './pages/about';
 import Contact from './pages/contact';
 import Property from './pages/Property';
 import Device from './pages/Device';
+import Transactions from './pages/Transactions';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/Home' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/Contact-us' element={<Contact/>}/>
+        <Route path='/transactions' element={<Transactions/>}/>
         <Route path='/property/:id' element={<Property/>}/>
         <Route path='/:property/devices/:deviceName' element={<Device/>}/>
         </Routes>

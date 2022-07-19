@@ -4,6 +4,27 @@
   padding: 0;
 }
 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+}
+
+td, th {
+  border: 1px solid #010606;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #868F96;
+}
+
+tr:nth-child(odd) {
+  background-color: #fff;
+}
+
 .home, .reports, .products {
   display: flex;
   height: 90vh;

@@ -28,6 +28,9 @@ const Navbar = () => {
                 <NavLink to="/Contact-Us" activeStyle>
                     Contact Us
                 </NavLink>
+                <NavLink to='/transactions' activeStyle>
+                    Transactions
+                </NavLink>
                 <div style={{position: 'absolute', right: '0%'}}>
                     <SignUp/>
                 </div>
