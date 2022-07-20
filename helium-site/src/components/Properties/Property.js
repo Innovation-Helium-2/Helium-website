@@ -46,9 +46,7 @@ export const PropertyButton = () => {
             .then(function(response){
                 console.log(JSON.stringify(response.data.insertedId))
                 let info_1 = JSON.stringify(response.data.insertedId);
-                let sliced = info_1.split('\"')[3];
-                console.log(sliced)
-                axios.put(ADD_PROPERTY_URL + sliced, params_2, {headers: {"Access-Control-Allow-Origin": "*",
+                axios.put(ADD_PROPERTY_URL + info_1, params_2, {headers: {"Access-Control-Allow-Origin": "*",
                 'Content-Type': 'application/json'}})
                 .then(function(response_2){
                     console.log(response_2)

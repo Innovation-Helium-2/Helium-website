@@ -65,6 +65,8 @@ const Signin = () => {
                 let prop_array = SidebarData[1].subNav
                 let index = 0;
                 response_2.data.forEach(e => {
+                    console.log(e)
+                    console.log(index)
                     let info = JSON.stringify(e);
                     let sliced = info.split('\"')[4];
                     let reduced = sliced.slice(0, -1)
