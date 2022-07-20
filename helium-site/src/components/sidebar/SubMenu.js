@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import InnerSubMenu from './InnerSubMenu';
+import { SidebarData } from './SidebarData';
 
 
 const SidebarLink = styled(Link)`
@@ -34,9 +35,24 @@ const SubMenu = ({ item }) => {
 
   const showSubnav = () => {
     if(allow){
+      cleanup()
       setSubnav(!subnav)
     }
   };
+
+  const cleanup = () => {
+    SidebarData[1].subNav.forEach(e => {
+      let unique = [];
+      let new_array = [];
+      e.subNav.forEach(k => {
+        if(!unique.includes(k.title)){
+          unique.push(k.title)
+          new_array.push(k)
+        }
+      })
+      e.subNav = new_array;
+    })
+  }
 
   return (
     <>

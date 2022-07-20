@@ -20,7 +20,8 @@ const Signin = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState('');
     const [password,setPassword] = useState('');
-    const [isLog, setIsLog] = useState('Sign In')
+    const [isLog, setIsLog] = useState('Sign In');
+    const [valid, setValid] = useState(true)
 
     const dispatch = useDispatch();
 
@@ -29,6 +30,7 @@ const Signin = () => {
     const openmodal = () => {
         
         if(allow){
+            setValid(!valid)
             dispatch(logOut())
             log.pop()
             setIsLog('Sign In')
@@ -43,6 +45,10 @@ const Signin = () => {
     }
 
     const onSubmit = () => {
+
+        const temp = [];
+        setValid(!valid)
+
         const params = JSON.stringify({
             "name": name,
             "password": password
@@ -57,16 +63,15 @@ const Signin = () => {
             })
             dispatch(logIn())
             setIsLog('Log Out')
-            openmodal()
             axios.post(PROPERTY_INFO_URL, params, {headers: {"Access-Control-Allow-Origin": "*",
             'Content-Type': 'application/json'}})
             .then(function(response_2){
                 console.log(JSON.stringify(response_2.data))
                 let prop_array = SidebarData[1].subNav
+                let max = response_2.data.length
                 let index = 0;
                 response_2.data.forEach(e => {
                     console.log(e)
-                    console.log(index)
                     let info = JSON.stringify(e);
                     let sliced = info.split('\"')[4];
                     let reduced = sliced.slice(0, -1)
@@ -82,8 +87,9 @@ const Signin = () => {
                             iconOpened: <RiIcons.RiArrowUpSFill />,
                             subNav: []
                         });
-                        let devices = prop_array[index].subNav
+                        let dev_max = response_3.data.device_id.length
                         response_3.data.device_id.forEach(e => {
+                            console.log(e)
                             let info_2 = JSON.stringify(e);
                             let sliced_2 = info_2.split('\"')[4];
                             let reduced_2 = sliced_2.slice(0, -1);
@@ -91,24 +97,51 @@ const Signin = () => {
                             'Content-Type': 'application/json'}})
                             .then(function(response_4){
                                 console.log(JSON.stringify(response_4.data))
-                                devices.push({
-                                    title: response_4.data.device,
-                                    path: '/' + response_3.data.property + '/devices/' + response_4.data.device,
-                                    type: '',
-                                    icon: <IoIcons.IoIosPaper />
+                                temp.push({
+                                    "device": response_4.data.device,
+                                    "property": response_3.data.property
                                 })
+                                index++
+                                if(response_3.data.device_id[index] === response_3.data.device_id[dev_max]){
+                                    build(temp)
+                                }
                             })
-                            index++;
                         });
                     })
                 });
             })
+            
         })
         .catch(function(e){
             console.log(e)
             window.alert('Invalid Username or Password')
         })
-        
+        console.log(temp)
+        console.log('hit')
+        console.log(SidebarData)
+        openmodal()
+    }
+    
+    const build = (temp) => {
+        let prop = SidebarData[1].subNav
+        for (let i = 0; i < prop.length; i++) {
+            console.log('hit')
+            const e = prop[i];
+            for (let k = 0; k < temp.length; k++) {
+                console.log('hit')
+                const m = temp[k];
+                if(m.property === e.title){
+                    console.log('hit')
+                    e.subNav.push({
+                        title: m.device,
+                        path: '/' + m.property + '/devices/' + m.device,
+                        type: '',
+                        icon: <IoIcons.IoIosPaper />
+                    })
+                    console.log('hit')
+                }
+            }
+        }
     }
 
         return(
