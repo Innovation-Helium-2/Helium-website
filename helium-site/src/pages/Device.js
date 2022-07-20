@@ -10,12 +10,12 @@ const Device = () => {
     const [deviceType, setDeviceType] = useState('');
 
     useEffect(() => {
-        let index = lookforindexP(propertyName);
+        let index = lookforindexP(url[1]);
 
-        let device = lookforindexD(pageName, index);
+        let device = lookforindexD(url[3], index);
 
         setDeviceType(SidebarData[1].subNav[index].subNav[device].type);
-    }, [propertyName, pageName])
+    }, [propertyName, pageName, url])
 
     const lookforindexP = (info) => {
         let place = SidebarData[1].subNav
@@ -44,7 +44,7 @@ const Device = () => {
   return (
     <div style={{height: '90vh', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '10px 10px 10px 10px'}}>
-            <h1>Device Name: {pageName}</h1>
+            <h1>Device Name: {url[3]}</h1>
         </div>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '10px 10px 10px 10px'}}>
             <h2>Device Type: {deviceType}</h2>
