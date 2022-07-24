@@ -2,7 +2,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -ms-overflow-style: none;
 }
+  ::-webkit-scrollbar {
+  display: none;
+  }
 
 table {
   font-family: arial, sans-serif;
