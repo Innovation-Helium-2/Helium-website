@@ -1,0 +1,52 @@
+.py { 
+   padding: 30px 0; 
+ }
+
+ .container {
+   margin: auto;
+   max-width: 1100px;
+   overflow: auto;
+   padding: 0 20px;
+ }
+
+ .text {
+   color: #256ce1; 
+ }
+
+
+ /* Contact Form */
+.group {
+   margin-bottom: 20px;
+ }
+ 
+label {
+   display: block;
+   margin-bottom: 5px;
+ }
+ 
+input, 
+textarea {
+   width: 100%;
+   padding: 10px;
+   border: 1px #ddd solid;
+ }
+ 
+textarea {
+   height: 200px;
+ }
+ 
+input:focus, 
+textarea:focus {
+   outline: none;
+   border-color: #f7c08a;
+ }
+
+ .btn {
+   display: inline-block;
+   font-size: 18px;
+   color: #fff;
+   background: #256ce1;
+   padding: 13px 20px;
+   border: none;
+   cursor: pointer;
+ }

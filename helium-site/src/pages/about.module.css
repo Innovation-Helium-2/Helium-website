@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
+h1 {
+  padding-bottom: 20px;
+}
+.text {
+  color: #256ce1; 
+}
+.py { 
+  padding: 30px 0; 
+}
+.right {
+  float: right;
+  width: 50%;
+  min-height: 100%;
+}
+.right img {
+   display: block;
+   margin: auto;
+   width: 70%;
+   border-radius: 50%;
+ }
+ .left {
+   float: left;
+   width: 50%;
+   min-height: 100%;
+ }
+ 
+ .container {
+  margin: auto;
+  max-width: 1100px;
+  overflow: auto;
+  padding: 0 20px;
+}
+
+#testimonials {
+  height: 700px;
+  background: url('./security.png') no-repeat center center/cover;
+  padding-top: 100px;
+}
+#testimonials h2 {
+  color: #fff;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+#testimonials .secondBackground img {
+  width: 100px;
+  float: left;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+#testimonials .secondBackground {
+  padding: 20px;
+  margin-bottom: 40px;
+  border-radius: 5px;
+  opacity: 0.9;
+  background: #f7c08a;
+  color: #333;
+}
