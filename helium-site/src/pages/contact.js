@@ -1,5 +1,7 @@
 import React from 'react'
 import classes from './contact.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLocation, faPhone, faMailBulk } from '@fortawesome/free-solid-svg-icons'
 const Contact = () => {
   return (
     <div>
@@ -24,6 +26,26 @@ const Contact = () => {
         <button type="submit" className={classes.btn}>Submit</button>
       </form>
       </section>
+
+      <section className={classes.dark}>
+        <div className={classes.container}>
+              <div className={classes.box}>
+                <FontAwesomeIcon icon={faLocation} size="3x"/>
+                <h3>Location</h3>
+                <p>123 Main st, Rochester NY</p>
+              </div>
+              <div className={classes.box}>
+                  <FontAwesomeIcon icon={faPhone} size="3x"/>
+                  <h3>Phone Number</h3>
+                  <p>(555) 555-5555</p>
+              </div>
+              <div className={classes.box}>
+                  <FontAwesomeIcon icon={faMailBulk} size="3x"/>
+                  <h3>Email Address</h3>
+                  <p>service@h2o.com</p>
+              </div>
+    </div>
+  </section>
     </div>
     // <div style={{
     //     display: 'flex',

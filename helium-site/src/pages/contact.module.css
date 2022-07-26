@@ -50,3 +50,15 @@ textarea:focus {
    border: none;
    cursor: pointer;
  }
+
+ .box {
+  float: left;
+  width: 33.3%;
+  padding: 50px;
+  text-align:center;
+}
+
+.dark {
+  background: #333;
+  color: #fff;
+}

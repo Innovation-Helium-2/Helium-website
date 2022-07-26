@@ -19,7 +19,7 @@ const About = () => {
       </section>
       <section id={classes["testimonials"]} className={classes.py}>
         <div className={classes.container}>
-          <h2>Our members</h2>
+          <h1>Our members</h1>
           <div className={classes.secondBackground}>
             <img src={Avatar} alt="avatar"/>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eligendi quibusdam, dolorum maxime cum numquam quisquam, deleniti eum incidunt, velit non consectetur. Facere, ipsa maxime, ullam id amet odio laboriosam sit iusto tempore fugit exercitationem, a dolore quo maiores nisi!</p>

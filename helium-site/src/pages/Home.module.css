@@ -1,0 +1,51 @@
+
+#showcase {
+   background: url('./background.jpg') center center/cover;
+   height: 600px;
+ }
+
+.container {
+   margin: auto;
+   max-width: 1100px;
+   overflow: auto;
+   padding: 0 20px;
+ }
+
+ #showcase .showcaseContent {
+   color: #fff;
+   text-align: center;
+   padding-top: 170px;
+ }
+
+ .text {
+   color: #256ce1; 
+ }
+ a {
+   color: #333;
+   text-decoration: none;
+ }
+  .btn {
+   margin-top: 20px;
+   display: inline-block;
+   font-size: 18px;
+   color: #fff;
+   background: #256ce1;
+   padding: 13px 20px;
+   border: none;
+   cursor: pointer;
+ }
+ .secondbox {
+   background-color: #333;
+   color: #fff;
+   float: left;
+   width: 33.3%;
+   padding: 50px;
+   text-align:center;
+ }
+ 
+ .box {
+   float: left;
+   width: 33.3%;
+   padding: 50px;
+   text-align:center;
+ }
