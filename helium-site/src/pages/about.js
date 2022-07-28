@@ -10,7 +10,11 @@ const About = () => {
         <div className={classes.container}>
           <div className={classes.left}>
               <h1><span className={classes.text}>About</span> H2O</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque molestias cumque unde ducimus vel aperiam dignissimos molestiae expedita. Incidunt earum soluta omnis, dolorum autem tempora veniam quis voluptate eaque quas.</p>
+              <p>
+                We are H2O team, formed by RIT Innovation Fellow program. Our mission is 
+                to create a reliable security system that provides reliable and affordable 
+                protection for their properties using Helium network. 
+              </p>
           </div>
           <div className={classes.right}>
             <img src={AboutLogo} alt='logo'/>
