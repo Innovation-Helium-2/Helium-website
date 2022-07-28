@@ -1,0 +1,84 @@
+.py { 
+   background-color: #fff;
+   padding: 30px 0; 
+   
+ }
+
+ .card {
+   border-style: solid;
+   border-color: #000;
+   padding: 30px 0; 
+ }
+ 
+ .container {
+   margin: auto;
+   max-width: 1100px;
+   overflow: auto;
+   padding: 10px 20px;
+ }
+
+img {
+   width: 80px;
+
+}
+.status {
+   float: right;
+   margin-top: 10px;
+   width: 12px;
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+ #leftContainer {
+   float: left;
+   width: 33%;
+   min-height: 100%;
+   border-style: solid;
+   box-shadow: 0 1px 8px 0 rgba(0,0,0,0.2);
+   border-color: #000;
+   border-width: 1px;
+   padding: 10px 10px; 
+   border-radius: 5px;
+ }
+
+ #leftContainer:hover {
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+ }
+
+ #leftContainer .left {
+   float: left;
+   width: 30%;
+   min-height: 100%;
+ }
+
+ #leftContainer .right {
+   float: right;
+   width: 70%;
+   min-height: 100%;
+ }
+
+ #rightContainer  {
+   float: right;
+   width: 65%;
+   min-height: 100%;
+   border-style: solid;
+   box-shadow: 0 1px 8px 0 rgba(0,0,0,0.2);
+   border-color: #000;
+   border-width: 1px;
+   padding: 10px 10px; 
+   border-radius: 5px;
+ }
+
+ #rightContainer:hover {
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+ }
+
+ #rightContainer .left {
+   float: left;
+   width: 30%;
+   min-height: 100%;
+ }
+
+.box {
+   float: left;
+   width: 33.3%;
+   padding: 5px;
+ }

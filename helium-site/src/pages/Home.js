@@ -14,7 +14,7 @@ const Home = () => {
             <p>H2O is a security system that utilizes an integrated 
               Helium blockchain network that is effective, easy-to-use in reasonably prices.
             </p>
-            <a className={classes.btn} href="/#">About Our Application</a>
+            <a className={classes.btn} href="/about">About Our Application</a>
           </div>
         </div>
       </div>
