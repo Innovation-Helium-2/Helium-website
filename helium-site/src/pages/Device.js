@@ -4,11 +4,18 @@ import { useLocation } from 'react-router-dom';
 import classes from './Device.module.css'
 import Sensor from './sensor.jpg'
 import Status from './status.png'
+
+function getRandomInt() {
+    return Math.floor(Math.random() * 1000000000);
+}
 const Device = () => {
+    let id = getRandomInt();
     const search = useLocation();
     const url = search.pathname.split('/')
+    
     const [pageName] = url?.[3]
     const [propertyName] = url?.[1]
+    
     const [deviceType, setDeviceType] = useState('');
 
     useEffect(() => {
@@ -70,7 +77,7 @@ const Device = () => {
                     </div>
                     <div className={classes.box}>
                         <p>Device ID</p>
-                        <p>1240091987</p>
+                        <p>{id}</p>
                     </div>
                 </div>
             </div>

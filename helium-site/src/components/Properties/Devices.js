@@ -42,8 +42,10 @@ export const Devices = () => {
             "property": property,
         });
         const params = JSON.stringify({
-            "device": info
+            "device": info,
+            "device_type": deviceType,
         })
+        console.log(params);
         axios.post(CREATE_DEVICE_URL, params, {headers: {"Access-Control-Allow-Origin": "*",
         'Content-Type': 'application/json'}})
         .then(function(response){

@@ -23,7 +23,9 @@ const SignUp =  () => {
         console.log(name, password,property,device);
         const params = JSON.stringify({
             "device": device,
+            "device_type": "",
         });
+        console.log(params);
         axios.post(DEVICE_URL, params, {headers: {"Access-Control-Allow-Origin": "*",
         'Content-Type': 'application/json'}})
         .then(function(response) {
