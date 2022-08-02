@@ -11,9 +11,9 @@ const Home = () => {
         <div className={classes.container}>
           <div className={classes.showcaseContent}>
             <h1><span className={classes.text}>Manage</span> Your Property</h1>
-            <p>H2O is a security system that utilizes an integrated 
+            <h3>H2O is a security system that utilizes an integrated 
               Helium blockchain network that is effective, easy-to-use in reasonably prices.
-            </p>
+            </h3>
             <a className={classes.btn} href="/about">About Our Application</a>
           </div>
         </div>

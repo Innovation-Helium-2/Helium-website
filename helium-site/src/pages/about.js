@@ -1,7 +1,9 @@
 import React from 'react'
 import classes from '../pages/about.module.css'
 import AboutLogo from './aboutUs.jpg'
-import Avatar from './avatar.jpg'
+import Avatar1 from './Andrew.png'
+import Avatar2 from './Julian.png'
+import Avatar3 from './Quang.png'
 const About = () => {
   return (
   
@@ -25,16 +27,38 @@ const About = () => {
         <div className={classes.container}>
           <h1>Our members</h1>
           <div className={classes.secondBackground}>
-            <img src={Avatar} alt="avatar"/>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eligendi quibusdam, dolorum maxime cum numquam quisquam, deleniti eum incidunt, velit non consectetur. Facere, ipsa maxime, ullam id amet odio laboriosam sit iusto tempore fugit exercitationem, a dolore quo maiores nisi!</p>
+            <img src={Avatar1} alt="avatar1"/>
+            <p>
+            Andrew Chacon
+            <br />
+            Hi, My name is Andrew and I'm the FrontEnd Developer in this application. I'm currently a 
+             Software Engineering at RIT. 
+            <br />
+            RIT 2025
+
+            </p>
           </div>
           <div className={classes.secondBackground}>
-            <img src={Avatar} alt="avatar"/>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eligendi quibusdam, dolorum maxime cum numquam quisquam, deleniti eum incidunt, velit non consectetur. Facere, ipsa maxime, ullam id amet odio laboriosam sit iusto tempore fugit exercitationem, a dolore quo maiores nisi!</p>
+            <img src={Avatar2} alt="avatar2"/>
+            <p>
+              Julian Mato-Hernandez
+              <br />
+              Hello everyone! I'm Julian and I contribute as a Hardware and Networking Developer
+. I'm currently a 
+             CIT student at RIT. 
+              <br />
+              RIT 2023
+            </p>
           </div>
           <div className={classes.secondBackground}>
-            <img src={Avatar} alt="avatar"/>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eligendi quibusdam, dolorum maxime cum numquam quisquam, deleniti eum incidunt, velit non consectetur. Facere, ipsa maxime, ullam id amet odio laboriosam sit iusto tempore fugit exercitationem, a dolore quo maiores nisi!</p>
+            <img src={Avatar3} alt="avatar3"/>
+            <p>
+              Quang Tran 
+              <br />
+              Hi there. My name is Quang and I'm the BackEnd Developer for this application. 
+              <br />
+              RIT 2023
+            </p>
           </div>
         </div>
       </section>

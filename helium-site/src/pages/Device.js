@@ -9,7 +9,7 @@ function getRandomInt() {
     return Math.floor(Math.random() * 1000000000);
 }
 const Device = () => {
-    let id = getRandomInt();
+    let id = 24009812;
     const search = useLocation();
     const url = search.pathname.split('/')
     
